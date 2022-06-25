@@ -35,10 +35,7 @@
  * @param array Source array
  * @param items Extra items to append
  */
-const append = <T>(
-  array: readonly T[],
-  ...items: readonly T[]
-): readonly T[] => {
+function append<T>(array: readonly T[], ...items: readonly T[]): readonly T[] {
   if (items.length === 0) {
     return array;
   }
@@ -46,6 +43,6 @@ const append = <T>(
     return items;
   }
   return [...array, ...items];
-};
+}
 
 export default append;

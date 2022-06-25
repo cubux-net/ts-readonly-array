@@ -22,7 +22,7 @@
  * @param index Offset to assign in
  * @param value New value to assign
  */
-const set = <T>(array: readonly T[], index: number, value: T): readonly T[] => {
+function set<T>(array: readonly T[], index: number, value: T): readonly T[] {
   if (index < 0 || index >= array.length) {
     throw new RangeError(
       `index ${index} is our of range 0..${array.length - 1}`,
@@ -35,6 +35,6 @@ const set = <T>(array: readonly T[], index: number, value: T): readonly T[] => {
   const next = [...array];
   next[index] = value;
   return next;
-};
+}
 
 export default set;

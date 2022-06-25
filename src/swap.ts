@@ -18,7 +18,7 @@
  * @param i Index 1
  * @param j Index 2
  */
-const swap = <T>(array: readonly T[], i: number, j: number): readonly T[] => {
+function swap<T>(array: readonly T[], i: number, j: number): readonly T[] {
   if (i < 0 || i >= array.length) {
     throw new RangeError(
       `1st index ${i} is our of range 0..${array.length - 1}`,
@@ -37,6 +37,6 @@ const swap = <T>(array: readonly T[], i: number, j: number): readonly T[] => {
   const next = [...array];
   [next[i], next[j]] = [next[j], next[i]];
   return next;
-};
+}
 
 export default swap;

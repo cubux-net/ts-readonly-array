@@ -19,11 +19,11 @@
  * @param start Offset in `array` where to start
  * @param length Number of items to remove
  */
-const remove = <T>(
+function remove<T>(
   array: readonly T[],
   start: number,
   length = 1,
-): readonly T[] => {
+): readonly T[] {
   if (start < 0 || start >= array.length) {
     throw new RangeError(
       `index ${start} is our of range 0..${array.length - 1}`,
@@ -42,6 +42,6 @@ const remove = <T>(
     return array.slice(0, start);
   }
   return [...array.slice(0, start), ...array.slice(start + length)];
-};
+}
 
 export default remove;

@@ -18,11 +18,11 @@
  * @param index Offset in `array` where to insert `items`
  * @param items Extra items to insert
  */
-const insert = <T>(
+function insert<T>(
   array: readonly T[],
   index: number,
   ...items: readonly T[]
-): readonly T[] => {
+): readonly T[] {
   if (index < 0 || index > array.length) {
     throw new RangeError(`index ${index} is our of range 0..${array.length}`);
   }
@@ -39,6 +39,6 @@ const insert = <T>(
     return [...array, ...items];
   }
   return [...array.slice(0, index), ...items, ...array.slice(index)];
-};
+}
 
 export default insert;

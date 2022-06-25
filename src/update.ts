@@ -18,11 +18,11 @@
  * @param index Offset to update
  * @param updater Callback to calculate new value
  */
-const update = <T>(
+function update<T>(
   array: readonly T[],
   index: number,
   updater: (prev: T, index: number) => T,
-): readonly T[] => {
+): readonly T[] {
   if (index < 0 || index >= array.length) {
     throw new RangeError(
       `index ${index} is our of range 0..${array.length - 1}`,
@@ -38,6 +38,6 @@ const update = <T>(
   const next = [...array];
   next[index] = newItem;
   return next;
-};
+}
 
 export default update;

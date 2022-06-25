@@ -2,7 +2,8 @@
 
 [![NPM latest](https://img.shields.io/npm/v/@cubux/readonly-array.svg)](https://www.npmjs.com/package/@cubux/readonly-array)
 
-A bunch of helper functions to work with read-only arrays.
+A bunch of helper functions to work with read-only arrays. Works internally with
+native arrays without any kind of magic.
 
 ```ts
 import { insert, remove } from '@cubux/readonly-array';

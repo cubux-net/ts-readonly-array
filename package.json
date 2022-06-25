@@ -4,6 +4,7 @@
   "description": "Functions to work with read-only arrays",
   "keywords": [
     "array",
+    "list",
     "readonly",
     "read-only",
     "immutable",
@@ -26,7 +27,9 @@
   "module": "dist/readonly-array.esm.js",
   "files": [
     "dist",
-    "src"
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
   ],
   "engines": {
     "node": ">=14"

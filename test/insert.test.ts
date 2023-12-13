@@ -32,31 +32,13 @@ it('inserts', () => {
   expect(insert(input, 0, 42, 37)).toEqual([42, 37, 10, 20, 30, 40, 50]);
   expect(insert(input, 1, 42, 37)).toEqual([10, 42, 37, 20, 30, 40, 50]);
   expect(insert(input, input.length - 2, 42, 37)).toEqual([
-    10,
-    20,
-    30,
-    42,
-    37,
-    40,
-    50,
+    10, 20, 30, 42, 37, 40, 50,
   ]);
   expect(insert(input, input.length - 1, 42, 37)).toEqual([
-    10,
-    20,
-    30,
-    40,
-    42,
-    37,
-    50,
+    10, 20, 30, 40, 42, 37, 50,
   ]);
   expect(insert(input, input.length, 42, 37)).toEqual([
-    10,
-    20,
-    30,
-    40,
-    50,
-    42,
-    37,
+    10, 20, 30, 40, 50, 42, 37,
   ]);
 
   expect(input).toEqual(backup);

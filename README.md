@@ -163,6 +163,38 @@ remove(input, 1, 2);  // => [10, 40]
 remove(input, 1, 10); // => [10]
 ```
 
+### `removeMatch()`
+
+```ts
+removeMatch<T>(
+  array:           readonly T[],
+  removePredicate: (value: T, index: number) => unknown,
+  limit:           number = 1,
+): readonly T[]
+```
+
+Remove items matching the given predicate
+
+Creates new array from the input `array` by *omitting* items *matching*
+predicate `removePredicate`. This is opposite to `Array.prototype.filter()`.
+
+Positive `limit` (defaults to `1`) will omit at most that number of items.
+Negative `limit` means "no limit".
+
+- Will return input `array` when it's nothing to change.
+
+```js
+const input = [10, 20, 30, 40];
+removeMatch(input, (v) => v % 20 === 0);
+// => [10, 30, 40]
+removeMatch(input, (v) => v % 10 === 0, 2);
+// => [30, 40]
+removeMatch(input, (v) => v % 2);
+// => [10, 20, 30, 40]
+removeMatch(input, (v) => v % 2 === 0, -1);
+// => []
+```
+
 ### `set()`
 
 ```ts
@@ -234,4 +266,36 @@ previous value and index.
 const input = [10, 20, 30, 40];
 update(input, 2, (v, i) => 1000 * i + v);
 // => [10, 20, 2030, 40]
+```
+
+### `updateMatch()`
+
+```ts
+update(
+  array:     readonly T[],
+  predicate: (value: T, index: number) => T,
+  updater:   (prev: T, index: number) => T,
+  limit:     number = 1,
+): readonly T[]
+```
+
+Creates new array from input `array` with some item matching `predicate` (at
+most `limit`) updated by `updater`.
+
+Callbacks `predicate(value, index)` and `updater(prev, index)` will receive item
+value and index. The `predicate` returns whether the given item need be updated.
+The `updater` will be called for those items matched by `predicated` until
+`limit` exceeds.
+
+Positive `limit` (defaults to `1`) will update at most that number of items.
+Negative `limit` means "no limit".
+
+- `limit` applies to `predicate` only without care if some previous item was
+  actually changed by `updater`.
+- Will return input `array` when nothing to change (`===` check).
+
+```js
+const input = [10, 20, 30, 40];
+updateMatch(input, v => v % 20 === 0, (v, i) => 1000 * i + v);
+// => [10, 1020, 30, 40]
 ```
